@@ -22,12 +22,10 @@ function Navbar({ setIsLoggedIn }) {
     <div>
       <NavLink
         to="/"
-        /* set exact so it knows to only set activeStyle when route is deeply equal to link */
         exact
-        /* add styling to Navlink */
         style={linkStyles}
-        /* add prop for activeStyle */
         activeStyle={{
+          ...linkStyles,
           background: "darkblue",
         }}
       >
@@ -38,6 +36,7 @@ function Navbar({ setIsLoggedIn }) {
         exact
         style={linkStyles}
         activeStyle={{
+          ...linkStyles,
           background: "darkblue",
         }}
       >
@@ -48,12 +47,21 @@ function Navbar({ setIsLoggedIn }) {
         exact
         style={linkStyles}
         activeStyle={{
+          ...linkStyles,
           background: "darkblue",
         }}
       >
         Login
       </NavLink>
-      <button onClick={handleLogout}>Logout</button>
+      <button
+        style={{
+          ...linkStyles,
+          background: "red",
+        }}
+        onClick={handleLogout}
+      >
+        Logout
+      </button>
     </div>
   );
 }

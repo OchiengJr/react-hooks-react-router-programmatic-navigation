@@ -1,5 +1,8 @@
-test("Test passing", () => {
+test("Test passing", async () => {
   return new Promise((resolve, reject) => {
-    resolve(true);
+    setTimeout(() => {
+      resolve(true);
+    }, 1000); // Simulate an asynchronous operation
   });
 });
+

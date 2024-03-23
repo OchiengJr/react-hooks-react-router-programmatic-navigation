@@ -9,19 +9,26 @@ function Login({ setIsLoggedIn }) {
   });
 
   function handleChange(e) {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    setIsLoggedIn(true);
-
-    // after logging the user in, redirect to the home page!
-    history.push("/");
+    // Simulate authentication
+    const isValidUser = formData.username === "user" && formData.password === "password";
+    if (isValidUser) {
+      setIsLoggedIn(true);
+      // Redirect to the home page after successful login
+      history.push("/");
+    } else {
+      // Handle invalid credentials
+      alert("Invalid username or password. Please try again.");
+    }
   }
 
   return (
@@ -32,12 +39,14 @@ function Login({ setIsLoggedIn }) {
         name="username"
         value={formData.username}
         onChange={handleChange}
+        placeholder="Username"
       />
       <input
         type="password"
         name="password"
         value={formData.password}
         onChange={handleChange}
+        placeholder="Password"
       />
       <button type="submit">Login</button>
     </form>
